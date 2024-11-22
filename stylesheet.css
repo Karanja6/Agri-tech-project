@@ -1,0 +1,137 @@
+body{
+    background-image: url("sunny-meadow-landscape.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    h1
+    {
+        box-shadow: 3px 3px 5px rgb(0, 0, 0);
+        
+    }
+    p {
+        font-size: larger;
+        color: #000000;
+    }
+    button
+    {
+    display: inline-block;
+    width: auto;
+    background-color: black;
+    color:white;
+    }    
+    button:active{
+        color:#000000;
+        background-color: #ffffff;
+    }
+    button:hover{
+        background-color: rgb(203, 216, 21);
+    }
+    .Thewholebox
+    {
+    font-size: larger;
+        align-self: center;
+        justify-content: center;
+    }
+    
+    .moreoptions{
+        font-size: larger;
+    }
+    .error-message {
+        color: #ff0000; 
+    }
+    }
+    form
+    {  
+        font-family: Georgia, 'Times New Roman', Times, serif;
+     }
+    a:link
+    {
+    color: rgb(19, 93, 252);
+    font-size:large;
+    font-style: bold;
+    text-shadow: 1px 1px 1px#ffffff;
+    }
+    a:visited{
+        color: blue;
+    }
+    a:hover
+    {
+        color: black;
+    }
+    a:active
+    {
+        color: rgb(255, 0, 55);
+    }
+    nav {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 3px 0;
+        text-align: center;
+    }
+    nav a {
+        color: #000000;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    section {
+        display: flex;
+        justify-content: space-around; 
+        align-items: flex-start; 
+        padding: 20px;
+        text-align: center;
+    }
+    .form-container {
+        flex: 1; 
+        max-width: 400px; 
+        margin-right: 20px; 
+    }
+    .weather-container {
+        flex: 1; 
+        max-width: 400px;
+        margin-left: 20px;
+        text-align: left; 
+    }
+    .recommendation-container {
+        flex: 1; 
+        max-width: 400px; 
+        margin-top: 20px; 
+        text-align: left;
+        display: none; 
+    }
+    .recommendation-container ul {
+        padding-left: 20px;
+    }
+    .recommendation-container button {
+        margin-top: 10px; 
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #000000;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .recommendation-container button:hover {
+        background-color: #3bff25;
+    }
+    .foot
+    {
+        font-size: larger;
+        font-style: oblique;
+        font-weight: bolder;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-shadow: 2px 2px 1px rgb(255, 255, 255);
+
+    }     
+    

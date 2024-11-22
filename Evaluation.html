@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Evaluation</title>      
+</head>
+<body>
+    <header>
+        <h1>Farmers Evaluation</h1>
+    </header>
+    <h1>Crop Process Form</h1>
+
+    <form id="crop_process">
+      <label for="farmers_id">Farmers ID:</label>
+      <input type="number" id="farmers_id" name="farmers_id" required><br>
+      <label for="crop">Crop:</label>
+      <input type="text" id="crop" name="crop" required><br>
+      <label for="process_type">Process Type:</label>
+      <select id="process_type" name="process_type" required>
+        <option value="land_prep">Land Preparation</option>
+        <option value="planting">Planting</option>
+        <option value="irrigation">Irrigation</option>
+        <option value="weed_control">Weed Control</option>
+        <option value="pest_management">Pest Management</option>
+        <option value="fertilization">Fertilization</option>
+        <option value="harvest">Harvest</option>
+        <option value="soil_management">Soil Management</option>
+      </select><br>
+      <label for="process_date">Process Date:</label>
+      <input type="date" id="process_date" name="process_date" required><br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="Help">
+        <h3>For any complaints call us on 0123456754</h3>
+        <P style="font-weight: bold;font-style:italic;">Make sure to login in back again for feedback to be recorded <br><a href="login.html">Login</a></P>
+        <form id="feedback-form">
+            <label for="status">Have been assisted?:</label>
+            <select id="status" name="status" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+             </select>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+    
+    <div class="foot">
+        <p>Making agriculture a source of livelihood</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
