@@ -134,4 +134,232 @@ body{
         text-shadow: 2px 2px 1px rgb(255, 255, 255);
 
     }     
-    
+    .expertProfiles {
+        display: none; 
+        margin-top: 20px;
+    }
+    .expertProfile {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .expertProfile:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+    .expertProfile h3 {
+        margin: 0;
+        color: #000000;
+    }
+    .expertProfile p {
+        font-size: 14px;
+        color: #000000;
+    }
+    .chatbox-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chatbox-header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .chatbox-body {
+        height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: white;
+        border-radius: 0 0 8px 8px;
+        border-top: 1px solid #ddd;
+    }
+
+    .chatbox-body p {
+        margin: 5px;
+        padding: 5px;
+        background-color: #eee;
+        border-radius: 5px;
+    }
+
+    .user-msg {
+        text-align: right;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .bot-msg {
+        text-align: left;
+        background-color: #ddd;
+    }
+
+    .chatbox-footer {
+        margin-top: 10px;
+    }
+
+    .chatbox-footer input[type="text"] {
+        width: 80%;
+        padding: 8px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .chatbox-footer button {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .chatbox-footer button:hover {
+        background-color: #45a049;
+    }
+
+    .upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .upload-container input[type="file"] {
+        margin: 10px;
+    }
+
+    .upload-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .upload-btn:hover {
+        background-color: #45a049;
+    }
+    .chatbox-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chatbox-header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .chatbox-body {
+        height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: white;
+        border-radius: 0 0 8px 8px;
+        border-top: 1px solid #ddd;
+    }
+
+    .chatbox-body p {
+        margin: 5px;
+        padding: 5px;
+        background-color: #eee;
+        border-radius: 5px;
+    }
+
+    .user-msg {
+        text-align: right;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .bot-msg {
+        text-align: left;
+        background-color: #ddd;
+    }
+
+    .chatbox-footer {
+        margin-top: 10px;
+    }
+
+    .chatbox-footer input[type="text"] {
+        width: 80%;
+        padding: 8px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .chatbox-footer button {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .chatbox-footer button:hover {
+        background-color: #45a049;
+    }
+
+    /* Styling for the completed process table */
+    .process-table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 50%;
+        display: none; /* Initially hidden */
+    }
+
+    .process-table th, .process-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .process-table th {
+        background-color: #f2f2f2;
+    }
+
+    .process-table td {
+        background-color: #fafafa;
+    }
+
+    .process-table tr:hover {
+        background-color: #f1f1f1;
+    }
+    .show-process-btn {
+        padding: 10px;
+        width: 20%;
+        background-color: #0c750f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .show-process-btn:hover {
+        background-color: #45a049;
+    }

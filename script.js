@@ -228,4 +228,142 @@ function displayWeather(data) {
             }
         });
     }
+    const farmersProcesses = {};
+function displayCompletedProcesses(farmerId) {
+    const tableBody = document.getElementById('completed_processes_table').getElementsByTagName('tbody')[0];
+    const farmerProcesses = farmersProcesses[farmerId] || [];
+    tableBody.innerHTML = '';
+    farmerProcesses.forEach(process => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+
+        cell1.textContent = process.crop;
+        cell2.textContent = process.processType;
+        cell3.textContent = process.processDate;
+    });
+    document.getElementById('farmer-id-display').textContent = farmerId;
+    document.getElementById('completed_processes_table').style.display = 'table';
+}
+document.getElementById('crop_process').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const farmerId = document.getElementById('farmers_id').value;
+    const crop = document.getElementById('crop').value;
+    const processType = document.getElementById('process_type').value;
+    const processDate = document.getElementById('process_date').value;
+    if (!farmersProcesses[farmerId]) {
+        farmersProcesses[farmerId] = [];
+    }
+    farmersProcesses[farmerId].push({ crop, processType, processDate });
+});
+document.getElementById('showProcessBtn').addEventListener('click', function() {
+    const farmerId = document.getElementById('farmers_id').value;
+    if (farmerId) {
+        displayCompletedProcesses(farmerId); 
+    } else {
+        alert("Please enter a valid Farmer ID.");
+        return;
+    }
+    fetch(`/api/Evaluation?farmers_id=${farmerId}`) 
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                displayProcesses(farmerId); 
+            } else {
+                alert("No processes found for the given Farmer ID.");
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching processes:', error);
+            alert("An error occurred while fetching the data.");
+        });
+});
+
+function displayProcesses(farmerId) {
+    fetch(`/api/get-processes?farmers_id=${farmerId}`) 
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('completed_processes_table').getElementsByTagName('tbody')[0];
+            const farmerIdDisplay = document.getElementById('farmer-id-display');
+            farmerIdDisplay.textContent = farmerId;
+            tableBody.innerHTML = '';
+            if (data.processes.length === 0) {
+                const row = tableBody.insertRow();
+                const cell = row.insertCell(0);
+                cell.colSpan = 3;
+                cell.textContent = "No processes found.";
+                return;
+            }
+            data.processes.forEach(process => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = process.crop;
+                row.insertCell(1).textContent = process.process_type;
+                row.insertCell(2).textContent = process.process_date;
+            });
+            document.querySelector('.process-table').style.display = 'table';
+        })
+        .catch(error => {
+            console.error('Error displaying processes:', error);
+            alert("An error occurred while displaying the processes.");
+        });
+}
+document.getElementById('sendBtn').addEventListener('click', async function() {
+        const userMessage = document.getElementById('userMessage').value.trim(); 
+        if (userMessage !== "") {
+            const userMsgElement = document.createElement('p');
+            userMsgElement.classList.add('user-msg');
+            userMsgElement.textContent = userMessage;
+            document.getElementById('chatbox-body').appendChild(userMsgElement);
+            try {
+                const response = await fetch('/api/diagnose-symptoms', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ symptoms: userMessage })
+                });
+                const data = await response.json();
+                
+                const botResponse = document.createElement('p');
+                botResponse.classList.add('bot-msg');
+                if (data.disease) {
+                    botResponse.textContent = `Disease: ${data.disease}\nRemedies: ${data.remedies.join(', ')}`;
+                } else {
+                    botResponse.textContent = data.message;
+                }
+                document.getElementById('chatbox-body').appendChild(botResponse);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+            document.getElementById('userMessage').value = ""; 
+        }
+    });
+    document.getElementById('uploadBtn').addEventListener('click', async function() {
+        const imageInput = document.getElementById('imageInput');
+        const formData = new FormData();
+        formData.append('cropImage', imageInput.files[0]);
+
+        const response = await fetch('/api/upload-image', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        const botResponse = document.createElement('p');
+        botResponse.classList.add('bot-msg');
+        botResponse.textContent = `Disease: ${data.disease}\nRemedies: ${data.remedies.join(', ')}`;
+        document.getElementById('chatbox-body').appendChild(botResponse);
+    });
+  
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const showExpertsBtn = document.getElementById('showExpertsBtn');
+    const expertProfiles = document.getElementById('expertProfiles');
+    expertProfiles.style.display = 'none';
+    showExpertsBtn.addEventListener('click', () => {
+        if (expertProfiles.style.display === 'none') {
+            expertProfiles.style.display = 'block';
+        } else {
+            expertProfiles.style.display = 'none';
+        }
+    });
 });

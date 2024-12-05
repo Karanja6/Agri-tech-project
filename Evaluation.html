@@ -11,7 +11,6 @@
         <h1>Farmers Evaluation</h1>
     </header>
     <h1>Crop Process Form</h1>
-
     <form id="crop_process">
       <label for="farmers_id">Farmers ID:</label>
       <input type="number" id="farmers_id" name="farmers_id" required><br>
@@ -32,24 +31,36 @@
       <input type="date" id="process_date" name="process_date" required><br>
       <button type="submit">Submit</button>
     </form>
-
     <div class="Help">
         <h3>For any complaints call us on 0123456754</h3>
-        <P style="font-weight: bold;font-style:italic;">Make sure to login in back again for feedback to be recorded <br><a href="login.html">Login</a></P>
-        <form id="feedback-form">
-            <label for="status">Have been assisted?:</label>
-            <select id="status" name="status" required>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-             </select>
-            <button type="submit">Submit Feedback</button>
-        </form>
     </div>
-    
-    <div class="foot">
-        <p>Making agriculture a source of livelihood</p>
+    <button class="show-process-btn" id="showProcessBtn">Show Processes</button>
+    <div id="completed_processes_section">
+            <h2>Completed Processes for Farmer ID: <span id="farmer-id-display">N/A</span></h2>
+            <table class="process-table" id="completed_processes_table">
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Process Type</th>
+                        <th>Process Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+        </div>
+    <div class="chatbox-container" id="chatbox">
+        <div class="chatbox-header">
+            <h4>Chat with us!</h4>
+        </div>
+        <div class="chatbox-body" id="chatbox-body">
+        </div>
+        <div class="chatbox-footer">
+            <input type="text" id="userMessage" placeholder="Type your message..." />
+            <button id="sendBtn">Send</button>
+        </div>
     </div>
-    
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
