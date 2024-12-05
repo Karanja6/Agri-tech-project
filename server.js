@@ -8,6 +8,7 @@ const session = require('express-session');
 require('dotenv').config();
 const app = express();
 const path = require('path');
+const multer = require('multer');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'randomsetofcharacters',
@@ -143,6 +144,7 @@ initializeDatabase()
   .catch(err => {
     console.error('Unable to initialize database:', err);
   });
+
 app.post('/api/register', async (req, res) => {
   const { farmers_id, fullName, contact, land_size, soil_type, password, confirmPassword } = req.body;
   if (password !== confirmPassword) {
@@ -203,24 +205,6 @@ app.post('/api/Evaluation', async (req, res) => {
     res.status(500).json({ message: 'An error occurred while recording the crop process', error: error.message });
   }
 });
-app.get('/api/Evaluation', async (req, res) => {
-  const { farmers_id, crop, process_type, process_date } = req.query; 
-  try {
-    const existingProcess = await CropProcess.findOne({
-      where: {
-        farmers_id,
-        crop,
-        process_type,
-        process_date,
-      },
-    });
-    res.json({ exists: !!existingProcess });
-  } catch (error) {
-    console.error('Error checking existing process:', error);
-    res.status(500).json({ message: 'An error occurred while checking existing processes' });
-  }
-});
-
 app.get('/home', (req, res) => {
   if (!req.session.farmers_id) {
     return res.redirect('/'); 
@@ -245,5 +229,19 @@ app.post('/api/feedback', async (req, res) => {
   } catch (error) {
     console.error('Error inserting feedback:', error);
     res.status(500).json({ message: 'Error saving feedback' });
+  }
+});
+app.get('/api/get-processes', async (req, res) => {
+  const { farmers_id } = req.query; 
+
+  try {
+    const processes = await CropProcess.findAll({
+      where: { farmers_id: farmers_id },
+      order: [['process_date', 'DESC']], 
+    });
+    res.json({ processes });
+  } catch (error) {
+    console.error('Error retrieving processes:', error);
+    res.status(500).json({ message: 'Error retrieving processes' });
   }
 });
